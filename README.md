@@ -1,7 +1,5 @@
 # Butterfly Image Classification 🦋
 
-![Project Banner](assets/banner.png)
-
 ## 🚀 Overview
 
 This repository demonstrates an end-to-end machine learning pipeline for classifying butterfly species from images. Starting from baseline classical models (Logistic Regression, SVM) and culminating in a Convolutional Neural Network (CNN), it showcases data acquisition, preprocessing, exploratory analysis, model training, evaluation, and visualization.
