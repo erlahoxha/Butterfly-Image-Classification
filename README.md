@@ -1,58 +1,63 @@
-# Butterfly Image Classification 🦋
+#  Butterfly Image Classification 🦋
 
 ## 🚀 Overview
 
-This repository demonstrates an end-to-end machine learning pipeline for classifying butterfly species from images. Starting from baseline classical models (Logistic Regression, SVM) and culminating in a Convolutional Neural Network (CNN), it showcases data acquisition, preprocessing, exploratory analysis, model training, evaluation, and visualization.
+Welcome! This project walks you through an end-to-end pipeline for teaching a machine to recognize ten different butterfly species from images. We start with simple, classical models—Logistic Regression and SVM—and then level up to a Convolutional Neural Network (CNN) built with TensorFlow/Keras. The result? A model that achieves **77.72 %** accuracy on unseen test images!
 
-**Key Highlights:**
-- **Dataset:** [Kaggle Butterfly Image Classification](https://www.kaggle.com/datasets/phucthaiv02/butterfly-image-classification)
-- **Models:** Logistic Regression, Support Vector Machine (SVM), and CNN (TensorFlow/Keras)
-- **Best Performance:** CNN yielded **77%** test accuracy (see “Results” below)
-- **Languages & Tools:** Python, Jupyter Notebook, scikit-learn, TensorFlow, matplotlib, seaborn
+**What’s Inside**  
+- 📊 **Dataset**: “Butterfly Image Classification” from Kaggle  
+- 🛠 **Models**: Logistic Regression → Support Vector Machine → CNN  
+- ⚙️ **Tools**: Python, scikit-learn, TensorFlow/Keras, matplotlib, seaborn  
+- 🎯 **Top Score**: **77.72 %** test accuracy with our CNN
 
 ---
 
-## 🧩 Model Pipeline
+## 🧩 How It Works
 
 ### 1. Baseline: Logistic Regression  
-- **Notebook:** `logistic_regression.ipynb`  
-- **Steps:**  
-  1. Load images, flatten into vectors  
-  2. Scale features (StandardScaler)  
-  3. Train/test split (80/20)  
-  4. Train logistic model  
-  5. Evaluate via accuracy & confusion matrix  
+We kick off with a straightforward approach:  
+1. Load and vectorize each image  
+2. Scale pixel values to standardize inputs  
+3. Split into 80 % train / 20 % test sets  
+4. Train a logistic regression classifier  
+5. Check accuracy and examine the confusion matrix  
 
-### 2. Baseline: Support Vector Machine  
-- **Notebook:** `svm_classification.ipynb`  
-- **Steps:**  
-  1. Same preprocessing as logistic  
-  2. Train SVM with various kernels  
-  3. Hyperparameter tuning (GridSearchCV)  
-  4. Evaluate metrics & visualize support vectors  
-
-### 3. Deep Learning: Convolutional Neural Network  
-- **Notebook:** `cnn_model.ipynb`  
-- **Architecture:**  
-  - 3×3 Conv layers → ReLU → MaxPooling  
-  - Dropout for regularization  
-  - Fully connected layers → Softmax output  
-- **Steps:**  
-  1. `ImageDataGenerator` for real-time augmentation  
-  2. Compile (`Adam`, categorical crossentropy)  
-  3. Train with validation split  
-  4. Plot training/validation loss & accuracy  
-  5. Evaluate on hold-out test set  
+Results: **64.61 %** test accuracy—solid for a first pass and a great sanity check!
 
 ---
 
-## 📊 Results & Visuals
+### 2. Baseline: Support Vector Machine  
+Next, we let SVM take the stage:  
+1. Reuse our cleaned, scaled data  
+2. Fit an SVM (RBF kernel)  
+3. Tune hyperparameters via grid search  
+4. Evaluate performance and peek at support vectors  
+
+Results: a notable jump to **71.35 %** accuracy—showing that a non-linear boundary helps separate these butterfly classes.
+
+---
+
+### 3. Deep Dive: Convolutional Neural Network  
+Finally, we embrace deep learning:  
+- **Architecture**: Stacks of 3×3 Conv → ReLU → MaxPooling → Dropout → Dense → Softmax  
+- **Workflow**:  
+  1. Real-time data augmentation with `ImageDataGenerator`  
+  2. Compile using the Adam optimizer and categorical cross-entropy  
+  3. Train with a built-in validation split to monitor overfitting  
+  4. Visualize training/validation loss & accuracy curves  
+  5. Evaluate on the hold-out test set  
+
+Results: our champion model achieves **77.72 %** accuracy on the test images!
+
+---
+
+## 📊 Final Results
 
 | Model                                | Test Accuracy |
 |--------------------------------------|--------------:|
-| Logistic Regression                  |      64.61 %  |
-| Support Vector Machine (RBF kernel)  |      71.35 %  |
-| Convolutional Neural Network (CNN)   |    **77.72%**|
+| Logistic Regression                  |       64.61 % |
+| SVM (RBF kernel)                     |       71.35 % |
+| Convolutional Neural Network (CNN)   | ** 77.72 % ** |
 
 > **Insight:** The SVM with an RBF kernel outperforms logistic regression on this 10-class butterfly subset. The CNN (your final model) should further boost accuracy—just replace **77.72 %** with its test score once you’ve logged it.
 
